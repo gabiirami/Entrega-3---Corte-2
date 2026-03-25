@@ -1,0 +1,41 @@
+#include <stdexcept>
+#include <mutex>
+using namespace std;
+
+class BankAccount {
+private:
+    int balance_ = 0;
+    bool is_open = false;
+    mutex m;
+
+public:
+    void open() {
+        lock_guard<mutex> lock(m);
+        is_open = true;
+        balance_ = 0;
+    }
+
+    void close() {
+        lock_guard<mutex> lock(m);
+        is_open = false;
+    }
+
+    void deposit(int amount) {
+        lock_guard<mutex> lock(m);
+        if (!is_open) throw runtime_error("Cuenta cerrada");
+        balance_ += amount;
+    }
+
+    void withdraw(int amount) {
+        lock_guard<mutex> lock(m);
+        if (!is_open) throw runtime_error("Cuenta cerrada");
+        if (balance_ < amount) throw runtime_error("Fondos insuficientes");
+        balance_ -= amount;
+    }
+
+    int balance() {
+        lock_guard<mutex> lock(m);
+        if (!is_open) throw runtime_error("Cuenta cerrada");
+        return balance_;
+    }
+};
