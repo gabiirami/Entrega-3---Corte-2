@@ -1,0 +1,36 @@
+#include <string>
+#include <cmath>
+using namespace std;
+
+string crypto_square(string text) {
+    string clean = "";
+
+    // 1. limpiar texto
+    for (char c : text) {
+        if (isalnum(c)) {
+            clean += tolower(c);
+        }
+    }
+
+    int n = clean.size();
+    if (n == 0) return "";
+
+    // 2. calcular filas y columnas
+    int cols = ceil(sqrt(n));
+    int rows = ceil((double)n / cols);
+
+    string result = "";
+
+    // 3. leer por columnas
+    for (int c = 0; c < cols; c++) {
+        if (c > 0) result += " ";
+        for (int r = 0; r < rows; r++) {
+            int index = r * cols + c;
+            if (index < n) {
+                result += clean[index];
+            }
+        }
+    }
+
+    return result;
+}
