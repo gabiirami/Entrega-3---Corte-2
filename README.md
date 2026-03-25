@@ -1,1 +1,4 @@
 # Entrega-3---Corte-2
+Este repositorio incluye la solución de dos ejercicios desarrollados en C++: Crypto Square y Bank Account. En el ejercicio de Crypto Square se implementa un método de cifrado de texto, donde primero se limpia la cadena eliminando caracteres innecesarios y luego se organiza en una especie de matriz para finalmente leerla por columnas, generando así un mensaje cifrado. Este ejercicio permite practicar el manejo de strings, ciclos y operaciones matemáticas básicas.
+
+Por otro lado, el ejercicio de Bank Account consiste en diseñar una clase que simula el funcionamiento de una cuenta bancaria, permitiendo realizar operaciones como abrir, cerrar, depositar y retirar dinero. Además, se trabaja el concepto de concurrencia mediante el uso de mutex, lo que garantiza que múltiples operaciones al mismo tiempo no generen errores en el saldo. Esto ayuda a entender mejor cómo hacer programas más seguros y cercanos a situaciones reales.
